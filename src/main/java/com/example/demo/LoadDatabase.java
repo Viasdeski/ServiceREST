@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 public class LoadDatabase {
 	
 	 private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
-
+	 
 	  @Bean
 	  CommandLineRunner initDatabase(ContatoRepository repository) {
 
