@@ -1,7 +1,13 @@
 package com.example.demo;
 
-import java.util.List;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,22 +21,32 @@ public class ContatoController {
 	
 	private final ContatoRepository repository;
 	
+	private final ContatoModelAssembler assembler;
 	
-	ContatoController(ContatoRepository repository){
+	
+	ContatoController(ContatoRepository repository, ContatoModelAssembler assembler){
 		this.repository = repository;
+		this.assembler = assembler;
 	}
 	
 	@GetMapping("/contatos")
-	  List<Contato> all() {
-	    return repository.findAll();
-	  }
+	CollectionModel<EntityModel<Contato>> all() {
+	  List<EntityModel<Contato>> contatos = repository.findAll().stream()
+	      .map(assembler::toModel)
+	      .collect(Collectors.toList());
+
+	  return CollectionModel.of(contatos, linkTo(methodOn(ContatoController.class).all()).withSelfRel());
+	}
+
 	
-	 @GetMapping("/contatos/{id}")
-	  Contato one(@PathVariable Long id) {
-	    
-	    return repository.findById(id)
+	@GetMapping("/contatos/{id}")
+	EntityModel<Contato> one(@PathVariable Long id) {
+	  Contato contato = repository.findById(id)
 	      .orElseThrow(() -> new ContatoNotFoundException(id));
-	  }
+
+	  return assembler.toModel(contato);
+	}
+	
 	
 	 @PostMapping("/contatos")
 	  Contato newContato(@RequestBody Contato newContato) {
