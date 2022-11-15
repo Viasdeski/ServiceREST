@@ -18,8 +18,8 @@ public class SwaggerConfig {
 
         return new Docket(DocumentationType.OAS_30)
                 .apiInfo(new ApiInfoBuilder()
-                        .description("API de acesso aos dados de clientes")
-                        .title("API de Clientes")
+                        .description("API REST para acesso ao contato de clientes.")
+                        .title("API de Contatos")
                         .version("1.0.0")
                         .build())
                 .host("clienteUI")
