@@ -1,9 +1,7 @@
 package com.example.demo;
 
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
-import io.swagger.v3.oas.annotations.info.Info;
-import io.swagger.v3.oas.annotations.servers.Server;
-import lombok.extern.slf4j.Slf4j;
+import java.util.Arrays;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -11,15 +9,28 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-import java.util.Arrays;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.extensions.Extension;
+import io.swagger.v3.oas.annotations.info.Contact;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.info.License;
+import io.swagger.v3.oas.annotations.servers.Server;
+import lombok.extern.slf4j.Slf4j;
 
 @SpringBootApplication
 @OpenAPIDefinition(
-        info = @Info(title = "API REST de Lista de Contatos- Trabalho G2 - POOA ", version = "1.0.0", description = "API de acesso ao contato de clientes. Desenvolvida por Vítor Viasdeski Monteiro e Luis Henrique Rodrigues"),
+		info = @Info(title = "API REST de Contatos de Clientes - Trabalho G2 - POOA", version = "1.0.0",
+        termsOfService = "",
+        contact = @Contact(name = "Desenvolvido por: Vítor Viadeski Monteiro e Luís Henrique Rodrigues",
+                           url = "https://github.com/Viasdeski/ServiceREST.git",
+                           email = ""
+                           ),
+        license = @License(name = "Apache 2.0",
+                           url = "http://www.apache.org/licenses/LICENSE-2.0.html"
+                           )),
         servers =
                 {
-                        @Server(url = "http://cliente-api"),
-                        @Server(url = "http://localhost:8080")
+                        @Server(url = "https://apirest-contatos-trabalhog2.herokuapp.com/swagger-ui/index.html")
                 }
 )
 @Slf4j
