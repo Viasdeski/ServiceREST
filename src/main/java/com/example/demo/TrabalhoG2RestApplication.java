@@ -30,7 +30,7 @@ import lombok.extern.slf4j.Slf4j;
                            )),
         servers =
                 {
-                        @Server(url = "https://apirest-contatos-trabalhog2.herokuapp.com/swagger-ui/index.html")
+                        @Server(url = "https://apirest-contatos-trabalhog2.herokuapp.com")
                 }
 )
 @Slf4j

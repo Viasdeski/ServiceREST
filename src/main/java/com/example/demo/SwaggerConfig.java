@@ -30,7 +30,7 @@ public class SwaggerConfig {
                         .build())
                 .host("clienteUI")
                 .servers(new ServerBuilder()
-                                .url("https://apirest-contatos-trabalhog2.herokuapp.com/swagger-ui/index.html")
+                                .url("https://apirest-contatos-trabalhog2.herokuapp.com")
                                 .build()
                                 );
     }
