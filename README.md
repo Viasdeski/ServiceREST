@@ -5,4 +5,4 @@ Desenvolvido com  a linguagem JAVA, utilizando a aplicação SWAGGER que auxilia
 Além disso, hospedamos a API no HEROKU;
 
 
-TRabalho desenvolvido por Vítor Viasdeski Monteiro e Luís Henrique Rodrigues.
+Trabalho desenvolvido por Vítor Viasdeski Monteiro e Luís Henrique Rodrigues.
